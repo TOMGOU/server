@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+const program = require('commander'), 
+  main = require('../lib/main.js'),
+  open = require('open'),
+  colors = require('colors');
+
+program
+  .version(require('../package').version)
+  .usage('[entry]')
+  .option('-p, --port [port]', 'Input port !')
+  .parse(process.argv);
+
+var ports = (program.port > 0 && program.port != true) ? program.port : 8080;
+// 监测端口是否被占用
+main.checkPort(ports).then(res => {
+  main.createServer(ports);
+  open(`http://localhost:${ports}`);
+}).catch((err) => {
+  console.log(err);
+});
