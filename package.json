@@ -1,6 +1,6 @@
 {
   "name": "vsv",
-  "version": "1.2.40",
+  "version": "1.2.41",
   "description": "browser-server",
   "main": "index.js",
   "scripts": {
